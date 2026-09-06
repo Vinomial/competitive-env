@@ -20,6 +20,12 @@ command_not_found_handler() {
   return 127
 }
 
+# competitive-env: `run0` だけは systemd 256+ 同梱の sudo 類似コマンド
+# (/usr/bin/run0 -> systemd-run) と名前が衝突し、実在コマンドとして解決される
+# ため command_not_found_handler が発火しない。明示的に関数で上書きして
+# `run 0` にフォールバックさせる(run1..run999 は同名バイナリが無いので不要)。
+run0() { run 0 "$@" }
+
 # competitive-env: mkprob auto-cd
 mkprob() {
   local prob=""

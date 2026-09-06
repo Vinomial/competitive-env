@@ -40,6 +40,16 @@ PATH設定・関数の中身はすべて `competitive-env.zsh`（リポジトリ
 - `run0` 〜 `run999` を `run <番号>` として実行（C++/Pythonどちらも対応）
 - 上記以外は通常の `command not found` を表示
 
+### `run0` function
+
+- `command_not_found_handler` はコマンドが**見つからなかったとき**しか発火しない。
+  systemd 256+ には sudo 類似の `run0`（`/usr/bin/run0` → `systemd-run`）が
+  同梱されており、これが実在コマンドとして解決されてしまうとハンドラを通らず
+  systemd 側の `run0` が実行される（WSL では polkit の対話認証ができず
+  `Failed to start transient service unit: Access denied ...` で失敗する）
+- そのため `run0` だけは明示的な関数 (`run0() { run 0 "$@" }`) で上書きしている。
+  `run1` 〜 `run999` は同名バイナリが無いのでハンドラ任せで問題ない
+
 ### `mkprob` function
 
 - `mkprob <lang> <problem>` 実行後、生成した `<problem>` ディレクトリへ自動で `cd`
