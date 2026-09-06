@@ -191,3 +191,14 @@ resolve_time_limit() {
     echo "$DEFAULT_TL_MS"
     return 0
 }
+
+# 現在時刻をミリ秒(epoch)で返す。
+# GNU date の `date +%s%3N`(秒 + 3桁ミリ秒)に依存していたが、uutils coreutils の
+# date は `%3N` の桁幅指定を無視してナノ秒をそのまま出すため、経過時間が約100万倍に
+# 膨らんで全ケース TLE 扱いになっていた。桁幅指定なしの `%N` は両実装とも
+# ナノ秒9桁を返すので、それを 1e6 で割ってミリ秒にする。
+now_ms() {
+    local ns
+    ns="$(date +%s%N)"
+    echo "$((ns / 1000000))"
+}

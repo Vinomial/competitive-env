@@ -111,9 +111,9 @@ run_case() {
     local tmpfile="$4"
     local difffile="$5"
 
-    start=$(date +%s%3N)
+    start=$(now_ms)
     python3 "$PY_FILE" < "$infile" > "$tmpfile"
-    end=$(date +%s%3N)
+    end=$(now_ms)
     elapsed=$((end - start))
 
     if $SINGLE; then

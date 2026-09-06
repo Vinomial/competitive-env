@@ -170,13 +170,13 @@ for ((i = 0; i < COUNT; i++)); do
     fi
 
     : > "$MAIN_ERR"
-    start=$(date +%s%3N)
+    start=$(now_ms)
     if "${MAIN_CMD[@]}" < "$IN_FILE" > "$MAIN_OUT" 2>"$MAIN_ERR"; then
         main_status=0
     else
         main_status=$?
     fi
-    end=$(date +%s%3N)
+    end=$(now_ms)
     elapsed=$((end - start))
 
     if [ "$main_status" -ne 0 ]; then

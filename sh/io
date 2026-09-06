@@ -93,10 +93,10 @@ retry_debug() {
         return
     fi
 
-    debug_start=$(date +%s%3N)
+    debug_start=$(now_ms)
     run_executable "$DEBUG_EXE" "$outfile" "$debug_errfile"
     debug_status=$?
-    debug_end=$(date +%s%3N)
+    debug_end=$(now_ms)
     debug_elapsed=$((debug_end - debug_start))
 
     if [ $debug_status -ne 0 ]; then
@@ -133,10 +133,10 @@ retry_trace() {
         return
     fi
 
-    trace_start=$(date +%s%3N)
+    trace_start=$(now_ms)
     run_executable "$TRACE_EXE" "$outfile" "$trace_errfile"
     trace_status=$?
-    trace_end=$(date +%s%3N)
+    trace_end=$(now_ms)
     trace_elapsed=$((trace_end - trace_start))
 
     if [ $trace_status -ne 0 ]; then
@@ -156,10 +156,10 @@ if $TERM; then
     echo "${C_BOLD}--- output ---${C_RESET}"
 fi
 
-start=$(date +%s%3N)
+start=$(now_ms)
 run_executable "$RUN_EXE" "out.txt" "in.err"
 status=$?
-end=$(date +%s%3N)
+end=$(now_ms)
 elapsed=$((end - start))
 
 if [ $status -ne 0 ]; then
