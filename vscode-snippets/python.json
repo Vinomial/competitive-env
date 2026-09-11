@@ -1,5 +1,6 @@
 {
   "List of integers from input": {
+    "scope": "python",
     "prefix": "listint",
     "body": [
       "list(map(int, input().split()))"
@@ -7,6 +8,7 @@
     "description": "Converts input to a list of integers"
   },
   "from collections import deque": {
+    "scope": "python",
     "prefix": "import deque",
     "body": [
       "from collections import deque"
@@ -14,6 +16,7 @@
     "description": "Imports deque from collections"
   },
   "import heapq": {
+    "scope": "python",
     "prefix": "import heapq",
     "body": [
       "import heapq"
@@ -21,6 +24,7 @@
     "description": "Import heapq"
   },
   "from collections import Counter": {
+    "scope": "python",
     "prefix": "import counter",
     "body": [
       "from collections import Counter"
@@ -28,6 +32,7 @@
     "description": "Imports Counter from collections"
   },
   "List of string from input": {
+    "scope": "python",
     "prefix": "liststr",
     "body": [
       "list(map(str, input().split()))"
@@ -35,6 +40,7 @@
     "description": "Converts input to a list of strings"
   },
   "Single line input": {
+    "scope": "python",
     "prefix": "input",
     "body": [
       "input()"
@@ -42,6 +48,7 @@
     "description": "Reads a single line of input as a string"
   },
   "Join list into string": {
+    "scope": "python",
   "prefix": "joinstr",
   "body": [
     "\"\".join($1)"
@@ -49,6 +56,7 @@
   "description": "Joins list C into a single string"
 },
   "Map int input": {
+    "scope": "python",
     "prefix": "mapint",
     "body": [
       "map(int, input().split())"
@@ -56,6 +64,7 @@
     "description": "Maps input().split() to int (iterator)"
   },
   "Map str input": {
+    "scope": "python",
     "prefix": "mapstr",
     "body": [
       "map(str, input().split())"
@@ -63,6 +72,7 @@
     "description": "Maps input().split() to str (iterator)"
   },
   "Split input to list of strings": {
+    "scope": "python",
     "prefix": "split",
     "body": [
       "input().split()"
@@ -70,6 +80,7 @@
     "description": "Splits input into a list of strings"
   },
   "Single integer input": {
+    "scope": "python",
     "prefix": "intinput",
     "body": [
       "int(input())"
@@ -77,6 +88,7 @@
     "description": "Reads and converts input to integer"
   },
   "2D character grid input": {
+    "scope": "python",
     "prefix": "input2d",
     "body": [
       "[list(input()) for _ in range($1)]"
@@ -84,6 +96,7 @@
     "description": "Reads N lines of character input as a 2D list"
   },
   "List comprehension": {
+    "scope": "python",
     "prefix": "listcomp",
     "body": [
       "[${1:x} for ${2:x} in ${3:iterable}]"
@@ -91,6 +104,7 @@
     "description": "Basic list comprehension"
   },
   "List comprehension with condition": {
+    "scope": "python",
     "prefix": "listcompif",
     "body": [
       "[${1:x} for ${2:x} in ${3:iterable} if ${4:condition}]"
@@ -98,6 +112,7 @@
     "description": "List comprehension with condition"
   },
   "For loop over range": {
+    "scope": "python",
     "prefix": "fori",
     "body": [
       "for ${1:i} in range($2):",
@@ -106,6 +121,7 @@
     "description": "Standard for loop using range"
   },
   "Zip and sort two lists": {
+    "scope": "python",
     "prefix": "zipsort",
     "body": [
       "A, B = zip(*sorted(zip(A, B)))"

@@ -1,5 +1,6 @@
 {
 	"rep0": {
+		"scope": "cpp",
 		"prefix": "rep0",
 		"body": [
 			"rep0(${1:i}, ${2:n})",
@@ -10,6 +11,7 @@
 		"description": "rep0(i, n)"
 	},
 	"rep": {
+		"scope": "cpp",
 		"prefix": "rep",
 		"body": [
 			"rep(${1:i}, ${2:a}, ${3:b})",
@@ -20,6 +22,7 @@
 		"description": "rep(i, a, b)"
 	},
 	"rrep": {
+		"scope": "cpp",
 		"prefix": "rrep",
 		"body": [
 			"rrep(${1:i}, ${2:a}, ${3:b})",
@@ -30,6 +33,7 @@
 		"description": "rrep(i, a, b)"
 	},
 	"VEC input macro": {
+		"scope": "cpp",
 		"prefix": "vec",
 		"body": [
 			"VEC(${1:ll}, ${2:A}, ${3:n});"
@@ -37,6 +41,7 @@
 		"description": "VEC(type, name, size) 入力マクロ"
 	},
 	"LL input macro": {
+		"scope": "cpp",
 		"prefix": "ll",
 		"body": [
 			"LL(${1:n});"
@@ -44,6 +49,7 @@
 		"description": "LL(...) ll型の変数入力マクロ"
 	},
 	"STR input macro": {
+		"scope": "cpp",
 		"prefix": "str",
 		"body": [
 			"STR(${1:s});"
@@ -51,6 +57,7 @@
 		"description": "STR(...) string型の変数入力マクロ"
 	},
 	"VV input macro": {
+		"scope": "cpp",
 		"prefix": "vv",
 		"body": [
 			"VV(${1:ll}, ${2:A}, ${3:h}, ${4:w});"
@@ -58,6 +65,7 @@
 		"description": "VV(type, name, h, w) 2次元配列入力マクロ"
 	},
 	"DBL input macro": {
+		"scope": "cpp",
 		"prefix": "dbl",
 		"body": [
 			"DBL(${1:x});"
@@ -65,6 +73,7 @@
 		"description": "DBL(...) double型の変数入力マクロ"
 	},
 	"VEC0 declare macro": {
+		"scope": "cpp",
 		"prefix": "vec0",
 		"body": [
 			"VEC0(${1:ll}, ${2:A}, ${3:n});"
@@ -72,6 +81,7 @@
 		"description": "VEC0(type, name, size) 0初期化の1次元配列宣言マクロ"
 	},
 	"VECI declare macro": {
+		"scope": "cpp",
 		"prefix": "veci",
 		"body": [
 			"VECI(${1:ll}, ${2:A}, ${3:n}, ${4:init});"
@@ -79,6 +89,7 @@
 		"description": "VECI(type, name, size, init) 初期値付き1次元配列宣言マクロ"
 	},
 	"VV0 declare macro": {
+		"scope": "cpp",
 		"prefix": "vv0",
 		"body": [
 			"VV0(${1:ll}, ${2:A}, ${3:h}, ${4:w});"
@@ -86,6 +97,7 @@
 		"description": "VV0(type, name, h, w) 0初期化の2次元配列宣言マクロ"
 	},
 	"VVI declare macro": {
+		"scope": "cpp",
 		"prefix": "vvi",
 		"body": [
 			"VVI(${1:ll}, ${2:A}, ${3:h}, ${4:w}, ${5:init});"
@@ -93,6 +105,7 @@
 		"description": "VVI(type, name, h, w, init) 初期値付き2次元配列宣言マクロ"
 	},
 	"VVV0 declare macro": {
+		"scope": "cpp",
 		"prefix": "vvv0",
 		"body": [
 			"VVV0(${1:ll}, ${2:A}, ${3:d1}, ${4:d2}, ${5:d3});"
@@ -100,6 +113,7 @@
 		"description": "VVV0(type, name, d1, d2, d3) 0初期化の3次元配列宣言マクロ"
 	},
 	"VVVI declare macro": {
+		"scope": "cpp",
 		"prefix": "vvvi",
 		"body": [
 			"VVVI(${1:ll}, ${2:A}, ${3:d1}, ${4:d2}, ${5:d3}, ${6:init});"
@@ -107,6 +121,7 @@
 		"description": "VVVI(type, name, d1, d2, d3, init) 初期値付き3次元配列宣言マクロ"
 	},
 	"sort ascending": {
+		"scope": "cpp",
 		"prefix": "sort",
 		"body": [
 			"sort(${1:A}.begin(), ${1:A}.end());"
@@ -114,6 +129,7 @@
 		"description": "昇順ソート"
 	},
 	"sort descending": {
+		"scope": "cpp",
 		"prefix": "rsort",
 		"body": [
 			"sort(${1:A}.rbegin(), ${1:A}.rend());"
@@ -121,6 +137,7 @@
 		"description": "降順ソート"
 	},
 	"sort with comparator": {
+		"scope": "cpp",
 		"prefix": "sortcmp",
 		"body": [
 			"sort(${1:A}.begin(), ${1:A}.end(), [](const auto &${2:a}, const auto &${3:b})",
@@ -129,6 +146,7 @@
 		"description": "比較関数付きソート"
 	},
 	"priority_queue (max-heap)": {
+		"scope": "cpp",
 		"prefix": "pq",
 		"body": [
 			"priority_queue<${1:ll}> ${2:Q};"
@@ -136,6 +154,7 @@
 		"description": "priority_queue<T> 最大ヒープ"
 	},
 	"priority_queue (min-heap)": {
+		"scope": "cpp",
 		"prefix": "pqmin",
 		"body": [
 			"priority_queue<${1:ll}, vector<${1:ll}>, greater<${1:ll}>> ${2:Q};"
@@ -143,6 +162,7 @@
 		"description": "priority_queue<T, vector<T>, greater<T>> 最小ヒープ"
 	},
 	"priority_queue (min-heap of pairs)": {
+		"scope": "cpp",
 		"prefix": "pqp",
 		"body": [
 			"priority_queue<pair<${1:ll}, ${1:ll}>, vector<pair<${1:ll}, ${1:ll}>>, greater<pair<${1:ll}, ${1:ll}>>> ${2:Q};"

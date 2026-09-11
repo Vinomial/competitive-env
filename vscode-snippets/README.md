@@ -37,6 +37,17 @@ Copy-Item "\\wsl.localhost\Ubuntu\home\binomial\Git\competitive-env\vscode-snipp
 スニペットを追加・変更したら、このリポジトリ側を更新した後、他のPCでも
 このコピーを再実行する必要がある（symlinkと違って自動追従しない）。
 
+## `scope` フィールドについて
+
+各スニペットには `"scope": "cpp"` / `"scope": "python"` を付けている。
+このファイル自体（`cpp.json`/`python.json`という言語名ファイル名）は
+ファイル名から言語スコープが暗黙に決まるため `scope` は本来不要で無視されるが、
+`cp-solutions` リポジトリ側では `.vscode/cpp.code-snippets` /
+`.vscode/python.code-snippets`（このファイルへのシンボリックリンク）として
+読み込まれる。`.code-snippets` 形式はファイル名から言語を判定できないため、
+明示的な `scope` が無いと全言語で候補に出てしまう。両方の読み込み方で
+正しく動くように、マスター側にも `scope` を付けている。
+
 ## 関連するVSCode設定（`settings.json`）
 
 `settings.json`自体はPCごとに固有の設定（MATLABパスなど）が混ざっているため
@@ -51,6 +62,8 @@ Copy-Item "\\wsl.localhost\Ubuntu\home\binomial\Git\competitive-env\vscode-snipp
 
 ## スニペット一覧
 
-内容の詳細は [Competitive-Programming リポジトリの docs](../../Competitive-Programming/docs/environment/vscode-snippets.md) を参照
+内容の詳細は [cp-solutions リポジトリの docs](../../cp-solutions/docs/environment/vscode-snippets.md) を参照
 （このリポジトリではファイルの実体のみを管理し、一覧表のドキュメントは
-実際に使うプロジェクト側に置いている）。
+実際に使うプロジェクト側に置いている）。cp-solutions 側の
+`.vscode/*.code-snippets` はこのディレクトリの `*.json` へのシンボリックリンク
+なので、cp-solutions 側で個別に同期を取る必要はない。
