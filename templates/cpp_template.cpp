@@ -208,10 +208,10 @@ namespace fastio
         }
     }
 
-    // 小数は小数点以下10桁で固定出力
-    inline void wt(float x) { cout << fixed << setprecision(10) << x; }
-    inline void wt(double x) { cout << fixed << setprecision(10) << x; }
-    inline void wt(long double x) { cout << fixed << setprecision(10) << x; }
+    // 小数は小数点以下15桁で固定出力
+    inline void wt(float x) { cout << fixed << setprecision(15) << x; }
+    inline void wt(double x) { cout << fixed << setprecision(15) << x; }
+    inline void wt(long double x) { cout << fixed << setprecision(15) << x; }
 
     // 文字列系
     inline void wt(const char *s) { cout << s; }
