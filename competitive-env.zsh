@@ -26,6 +26,33 @@ command_not_found_handler() {
 # `run 0` にフォールバックさせる(run1..run999 は同名バイナリが無いので不要)。
 run0() { run 0 "$@" }
 
+# competitive-env: mkprob/next/back で移動した後、その問題フォルダに
+# 対応するソースファイルを VSCode で自動的に開く。
+# <フォルダ名>.cpp/.py があればそれを、無ければ唯一の *.cpp/*.py を開く
+# (mkfile で複数ソースがある場合など、判定できなければ何もしない)。
+# code コマンド(VSCode remote-cli)が無い環境では何もしない。
+_open_problem_source() {
+  command -v code >/dev/null 2>&1 || return 0
+
+  local dir="$(basename "$PWD")"
+  local file=""
+  if [ -f "$dir.cpp" ]; then
+    file="$dir.cpp"
+  elif [ -f "$dir.py" ]; then
+    file="$dir.py"
+  else
+    local cpp_files=(*.cpp(N))
+    local py_files=(*.py(N))
+    if [ ${#cpp_files[@]} -eq 1 ] && [ ${#py_files[@]} -eq 0 ]; then
+      file="${cpp_files[1]}"
+    elif [ ${#py_files[@]} -eq 1 ] && [ ${#cpp_files[@]} -eq 0 ]; then
+      file="${py_files[1]}"
+    fi
+  fi
+
+  [ -n "$file" ] && code -r "$file"
+}
+
 # competitive-env: mkprob auto-cd
 mkprob() {
   local prob=""
@@ -35,6 +62,7 @@ mkprob() {
   command mkprob "$@" || return $?
   if [ -n "$prob" ] && [ -d "$prob" ]; then
     cd "$prob" || return $?
+    _open_problem_source
   fi
 }
 
@@ -57,10 +85,12 @@ next() {
   local target
   target="$(command next)" || return $?
   cd "$target" || return $?
+  _open_problem_source
 }
 
 back() {
   local target
   target="$(command back)" || return $?
   cd "$target" || return $?
+  _open_problem_source
 }

@@ -54,6 +54,7 @@ PATH設定・関数の中身はすべて `competitive-env.zsh`（リポジトリ
 
 - `mkprob <lang> <problem>` 実行後、生成した `<problem>` ディレクトリへ自動で `cd`
 - 実体コマンドは `command mkprob "$@"` で呼び出し
+- `cd` 後、`_open_problem_source`（後述）で対応するソースファイルを自動で開く
 
 ### `mkcontest` function
 
@@ -70,6 +71,14 @@ PATH設定・関数の中身はすべて `competitive-env.zsh`（リポジトリ
 - 実体コマンド (`command next` / `command back`) が解決した絶対パスを
   標準出力に返し、それを読んで `cd` する（失敗時は標準エラーにエラーを出して
   何もせず終了）
+- `cd` 後、`_open_problem_source`（後述）で対応するソースファイルを自動で開く
+
+### `_open_problem_source` function
+
+- `mkprob`/`next`/`back` が `cd` した直後に呼ぶ内部ヘルパー（直接使うものではない）
+- カレントディレクトリ名と同名の `.cpp`/`.py` があればそれを、無ければ唯一の
+  `*.cpp`/`*.py` があればそれを `code -r <file>`（VSCode remote-cli、既存ウィンドウ再利用）で開く
+- 複数ソースがあって判定できない場合、または `code` コマンドが無い環境では何もしない
 
 ## Notes
 
